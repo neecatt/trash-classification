@@ -23,18 +23,6 @@ This project builds a lightweight yet powerful image classifier that recognizes 
 - **Explainability**: Captum's Saliency, SmoothGrad, Guided Backpropagation
 - **Deployment**: Streamlit app for real-time prediction and visualization
 
-**Project Structure:**
-```
-trash_classifier/
-├── notebooks/              # EDA, preprocessing, model dev
-├── src/                   # Training, model, data loading
-├── data/                  # Raw and processed image folders
-├── outputs/               # Models, logs, saliency maps
-├── web_app/               # Streamlit frontend
-└── utils/                 # Helper functions
-```
-
----
 
 ## Dataset Used
 
@@ -87,9 +75,10 @@ Training monitored using:
 - `Accuracy/train` and `Accuracy/val`
 - `Loss/train` and `Loss/val`
 
-**Visual Placeholder:**
-> ![Training Accuracy](path/to/train_accuracy.png)  
-> ![Validation Loss](path/to/val_loss.png)
+**Training Accuracy/Validation Graph:**
+
+
+<img src="eval_pics/acc_loss.png" width="60%"/>  
 
 ---
 
