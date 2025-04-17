@@ -97,17 +97,21 @@ Training monitored using:
 - Streamlit demo UI
 
 **Visual Placeholder:**
-> ![Saliency Example](path/to/saliency_example.png)  
-> ![Streamlit UI Screenshot](path/to/streamlit_app.png)
 
+<table>
+  <tr>
+    <td><img src="eval_pics/streamlit_testpic.png" width="100%"/></td>
+    <td><img src="eval_pics/saliency_map.png" width="100%"/></td>
+  </tr>
+</table>
 ---
 
 ## Overall Project Impact
 
-- ✅ Demonstrates real-world machine learning application  
-- 📈 High performance on imbalanced, noisy data  
-- 🔍 Includes interpretability and explainability tools  
-- 🚀 Easy-to-use UI for non-technical users  
+- Demonstrates real-world machine learning application  
+- High performance on imbalanced, noisy data  
+- Includes interpretability and explainability tools  
+- Easy-to-use UI for non-technical users  
 
 This project shows a complete ML pipeline — from raw image data to deployed app with transparency in decision-making.
 
