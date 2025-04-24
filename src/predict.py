@@ -19,7 +19,7 @@ def preprocess_image(image_path, image_size):
         transforms.Normalize([0.5]*3, [0.5]*3)
     ])
     image = Image.open(image_path).convert("RGB")
-    return transform(image).unsqueeze(0)  # [1, C, H, W]
+    return transform(image).unsqueeze(0)  
 
 def predict_image(model, image_tensor, class_names, device):
     image_tensor = image_tensor.to(device)
