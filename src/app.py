@@ -24,7 +24,7 @@ def compute_saliency_map(model, input_tensor, method):
     input_tensor = input_tensor.to(config.DEVICE)
     input_tensor.requires_grad_()
 
-    # Get prediction
+
     output = model(input_tensor)
     pred_class = output.argmax(dim=1).item()
     confidence = torch.softmax(output, dim=1)[0][pred_class].item()
@@ -35,7 +35,12 @@ def compute_saliency_map(model, input_tensor, method):
     elif method == "smoothgrad":
         attr = NoiseTunnel(Saliency(model))
         attributions = attr.attribute(
-            input_tensor, nt_type="smoothgrad", target=pred_class, nt_samples=20, stdevs=0.2)
+            input_tensor, 
+            nt_type="smoothgrad", 
+            target=pred_class, 
+            nt_samples=config.SMOOTHGRAD_SAMPLES, 
+            stdevs=config.SMOOTHGRAD_STDEV
+        )
     elif method == "guided":
         attr = GuidedBackprop(model)
         attributions = attr.attribute(input_tensor, target=pred_class)
@@ -43,7 +48,7 @@ def compute_saliency_map(model, input_tensor, method):
         raise ValueError("Unsupported method")
 
     saliency = attributions.squeeze().abs().cpu().detach().numpy()
-    saliency = np.max(saliency, axis=0)  # to grayscale
+    saliency = np.max(saliency, axis=0)  
 
     return pred_class, confidence, saliency
 
@@ -68,7 +73,7 @@ def run_saliency(model, input_tensor):
 
     output[0, pred_class].backward()
     saliency = input_tensor.grad.abs().squeeze().cpu().numpy()
-    saliency = np.max(saliency, axis=0)  # convert to grayscale
+    saliency = np.max(saliency, axis=0)  
     return pred_class, confidence, saliency
 
 
@@ -77,7 +82,7 @@ def get_saliency_figure(input_tensor, saliency_map):
     saliency_map /= saliency_map.max() + 1e-10
 
     img_np = input_tensor.squeeze().detach().cpu().numpy()
-    img_np = np.transpose(img_np, (1, 2, 0))  # C,H,W → H,W,C
+    img_np = np.transpose(img_np, (1, 2, 0))  
     img_np = (img_np * 0.5 + 0.5).clip(0, 1)
 
     saliency_rgb = np.stack([saliency_map]*3, axis=-1)
