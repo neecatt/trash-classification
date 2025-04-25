@@ -46,6 +46,9 @@ This project builds a lightweight yet powerful image classifier that recognizes 
   - Transfer learning with frozen base layers
   - Adam optimizer, CrossEntropyLoss
   - TensorBoard for live metric tracking
+  - Hyperparameter-tuned model with data augmentation for improved generalization
+  - Gradient clipping for stability
+  - Dropout for regularization
 
 - **Preprocessing**:
   - Resize & normalize images to 224x224
@@ -64,12 +67,22 @@ This project builds a lightweight yet powerful image classifier that recognizes 
 ---
 
 ## Training Procedure
-
+First Run: 
 - Epochs: 10
 - Optimizer: Adam (lr = 1e-4)
 - Loss Function: CrossEntropy
 - Early Stopping: Not needed (no overfitting)
 - Logging: TensorBoard for accuracy/loss
+
+Second Run(added hyperparameter tuning):
+  - Hyperparameter tuning:
+    - Learning rate: 1e-3, 1e-4, 1e-5
+    - Batch size: 32, 64, 128
+    - Data augmentation: Yes, No
+    - Dropout: Yes, No
+    - Gradient clipping: Yes, No
+  - Trials: 10, with different hyperparameters using grid search
+  - Epochs: 5
 
 Training monitored using:
 - `Accuracy/train` and `Accuracy/val`
@@ -121,11 +134,11 @@ This project shows a complete ML pipeline — from raw image data to deployed ap
 
 > A robust trash classifier trained on real data, achieving **91.1% accuracy** on validation and equipped with **visual explainability**, ready to be deployed in sustainability-focused applications, smart bins, or recycling plants.
 
-**[Live Demo Link Coming Soon]**
+Live Demo: [Hugging Face Space Demo](https://huggingface.co/spaces/neecat/trash-classification-pytorch)
 
 **[Try Locally]**:  
 ```bash
-streamlit run web_app/app.py
+streamlit run src/app.py
 ```
 
 ---
