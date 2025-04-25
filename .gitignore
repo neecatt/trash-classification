@@ -1,0 +1,81 @@
+# Data
+data/
+dataset/
+raw/
+*.csv
+*.json
+*.xlsx
+*.h5
+
+# Model files
+*.pth
+*.pt
+*.onnx
+*.pb
+*.tflite
+*.mlmodel
+checkpoints/
+saved_models/
+weights/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+.eggs/
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Logs and temp files
+logs/
+*.log
+temp/
+tmp/
+.coverage
+htmlcov/
+.pytest_cache/
+.coverage.*
+
+# TensorBoard
+runs/
+tensorboard/
+logs/
+events.out.tfevents.*
+
+# MLflow
+mlruns/
+
+# DVC
+.dvc/
+
+# Weights & Biases
+wandb/
